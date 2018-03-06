@@ -9,39 +9,45 @@ class GraphTest {
     @Test
     void NumberOfChildren() {
         ArrayList<String> list = new ArrayList<>();
-        list.add("D");
+        list.add("K");
         list.add("F");
-        graph.AddVertex("A");
-        graph.AddVertex("B");
-        graph.AddVertex("C");
-        graph.AddVertex("D");
-        graph.AddVertex("E");
-        graph.AddVertex("F");
-        graph.AddRib("E","B",6);
-        graph.AddRib("E","C",3);
-        graph.AddRib("E","D",2);
-        graph.AddRib("C","A",1);
-        graph.AddRib("E","F",2);
-        graph.ChangeRibPrice("E","C",0);
-        graph.RemoveVertex("B");
-        assertEquals(list,graph.NumberOfChildren("E"));
+        graph.graph(8);
+        graph.addVertex("A");
+        graph.addVertex("B");
+        graph.addVertex("C");
+        graph.addVertex("D");
+        graph.addVertex("E");
+        graph.addVertex("F");
+        graph.addRib("E","B",6);
+        graph.addRib("E","C",3);
+        graph.addRib("E","D",2);
+        graph.addRib("C","A",1);
+        graph.addRib("E","F",2);
+        graph.changeRibPrice("E","C",null);
+        graph.removeVertex("B");
+        graph.changeName("D","K");
+        assertEquals(list,graph.getChildren("E"));
     }
     @Test
     void NumberOfParents() {
         ArrayList<String> list = new ArrayList<>();
-        list.add("F");
-        graph.AddVertex("A");
-        graph.AddVertex("B");
-        graph.AddVertex("C");
-        graph.AddVertex("D");
-        graph.AddVertex("E");
-        graph.AddVertex("F");
-        graph.AddRib("A","E",6);
-        graph.AddRib("C","E", 10);
-        graph.AddRib("A","D",2);
-        graph.AddRib("F","E",8);
-        graph.ChangeRibPrice("A","E",0);
-        graph.RemoveVertex("C");
-        assertEquals(list,graph.NumberOfParents("E"));
+        list.add("B");
+        graph.graph(8);
+        graph.addVertex("A");
+        graph.addVertex("B");
+        graph.addVertex("C");
+        graph.addVertex("D");
+        graph.addVertex("E");
+        graph.addVertex("F");
+        graph.addRib("A","E",6);
+        graph.addRib("C","E", 10);
+        graph.addRib("A","D",2);
+        graph.addRib("F","E",8);
+        graph.addRib("B","E",2);
+        graph.changeRibPrice("A","E",null);
+        graph.removeVertex("C");
+        graph.changeName("F","U");
+        graph.removeVertex("U");
+        assertEquals(list,graph.getParents("E"));
     }
 }
