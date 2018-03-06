@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Graph {
-        public ArrayList<String> vertexList = new ArrayList<>();
+        public ArrayList<String> vertexList = new ArrayList<>();          /** А такой вариант не пойдет?*/
         public Integer[][] matrix;
 
         public void graph(int Vertices) {
