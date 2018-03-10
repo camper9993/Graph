@@ -3,7 +3,7 @@ package classes;
 import java.util.*;
 
 class Graph {
-    private Map<String, Map<String, Integer>> matrixList = new HashMap<>();
+    private Map<String, Map<String, Integer>> matrixList = new HashMap<>();  /**Все таки решил сделать с помощью Map'ы */
 
     void addVertex(String name) {
         matrixList.put(name, new HashMap<>());
@@ -17,7 +17,6 @@ class Graph {
                 matrixList.get(key).put(name2, matrixList.get(key).get(name1));
                 matrixList.get(key).remove(name1);
             }
-
         }
     }
 
