@@ -54,5 +54,23 @@ class Graph {
         list.addAll(matrixList.get(name).keySet());
         return list;
     }
+
+    List<String> showGraph() {
+        List<String> result = new ArrayList<>();
+        for (String key: matrixList.keySet()) {
+            StringBuilder str = new StringBuilder();
+            str.append(key);
+            if (matrixList.get(key) != null && !matrixList.get(key).isEmpty()) {
+                str.append(" -> ");
+                for (String key2: matrixList.get(key).keySet()) {
+                    str.append(key2).append("(price ").append(matrixList.get(key).get(key2)).append(");");
+                }
+            }
+            if (matrixList.get(key).isEmpty())
+                str.append(" -> No ways");
+            result.add(str.toString());
+        }
+        return result;
+    }
 }
 
