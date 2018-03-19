@@ -3,7 +3,10 @@ package classes;
 import java.util.*;
 
 class Graph {
-    private Map<String, Map<String, Integer>> matrixList = new HashMap<>();  /**Все таки решил сделать с помощью Map'ы */
+    private Map<String, Map<String, Integer>> matrixList = new HashMap<>();  /**Добавил метод чтения графа, и добавил тестов.
+                                                                                P.S. Я приболел немного, не пришел на практику,
+                                                                                можно узнать до какого числа нужно сделать второе 
+                                                                                задание по програмрованию?*/
 
     void addVertex(String name) {
         matrixList.put(name, new HashMap<>());
