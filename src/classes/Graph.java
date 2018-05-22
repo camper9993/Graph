@@ -3,11 +3,7 @@ package classes;
 import java.util.*;
 
 class Graph {
-    private Map<String, Map<String, Integer>> matrixList = new HashMap<>();
-
-    /**
-     * Все таки решил сделать с помощью Map'ы
-     */
+    private Map<String, Map<String, Integer>> matrixList = new HashMap<>();  /**Все таки решил сделать с помощью Map'ы */
 
     void addVertex(String name) {
         matrixList.put(name, new HashMap<>());
@@ -49,18 +45,32 @@ class Graph {
         for (String key : matrixList.keySet()) {
             if (matrixList.get(key) != null && matrixList.get(key).containsKey(name))
                 list.add(key);
-            }
-            for (String s : list)
-                System.out.print(s + " ");
-            return list;
+        }
+        return list;
     }
 
-        List<String> getChildren (String name){
-            ArrayList<String> list = new ArrayList<>();
-            list.addAll(matrixList.get(name).keySet());
-            for (String s : list)
-                System.out.print(s + " ");
-            return list;
-        }
+    List<String> getChildren(String name) {
+        ArrayList<String> list = new ArrayList<>();
+        list.addAll(matrixList.get(name).keySet());
+        return list;
     }
+
+    List<String> showGraph() {
+        List<String> result = new ArrayList<>();
+        for (String key: matrixList.keySet()) {
+            StringBuilder str = new StringBuilder();
+            str.append(key);
+            if (matrixList.get(key) != null && !matrixList.get(key).isEmpty()) {
+                str.append(" -> ");
+                for (String key2: matrixList.get(key).keySet()) {
+                    str.append(key2).append("(price ").append(matrixList.get(key).get(key2)).append(");");
+                }
+            }
+            if (matrixList.get(key).isEmpty())
+                str.append(" -> No ways");
+            result.add(str.toString());
+        }
+        return result;
+    }
+}
 
