@@ -55,34 +55,4 @@ class GraphTest {
         graph.changeName("F","U");
         assertEquals(list,graph.getParents("E"));
     }
-    @Test
-    void showGraph() {
-        List<String> list = new ArrayList<>();
-        list.add("A -> D(price 2);");
-        list.add("B -> E(price 2);G(price 7);");
-        list.add("D -> No ways");
-        list.add("E -> No ways");
-        list.add("U -> E(price 8);");
-        list.add("G -> E(price 8);");
-
-        graph.addVertex("A");
-        graph.addVertex("B");
-        graph.addVertex("C");
-        graph.addVertex("D");
-        graph.addVertex("E");
-        graph.addVertex("F");
-        graph.addVertex("G");
-        graph.addRib("A","E",6);
-        graph.addRib("C","E", 10);
-        graph.addRib("A","D",2);
-        graph.addRib("F","E",8);
-        graph.addRib("B","E",2);
-        graph.addRib("G","E",2);
-        graph.addRib("B", "G",7);
-        graph.changeRibPrice("G","E",8);
-        graph.deleteRib("A","E");
-        graph.removeVertex("C");
-        graph.changeName("F","U");
-        assertEquals(list,graph.showGraph());
-    }
 }
